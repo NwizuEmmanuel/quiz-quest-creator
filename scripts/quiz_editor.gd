@@ -18,6 +18,7 @@ extends Control
 @onready var option_3_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option3Error
 @onready var option_4_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option4Error
 @onready var answer_error_label = $MarginContainer/HSplitContainer/VBoxContainer/AnswerError
+@onready var answer_label = $MarginContainer/HSplitContainer/VBoxContainer/AnswerLabel
 
 var questions = []
 # Called when the node enters the scene tree for the first time.
@@ -28,6 +29,13 @@ func _ready() -> void:
 	clear_inputs_button.connect("pressed", clear_inputs)
 	delete_button.connect("pressed", delete_question)
 	clear_selections_button.connect("pressed", clear_questions_item_list_selections)
+	answer_input.connect("text_changed", multiple_choice_answer_text_change)
+
+
+func multiple_choice_answer_text_change(new_text):
+	if multiple_choice_checkbutton.button_pressed:
+		if new_text.length() > 1 and !["1","2","3","4"].has(new_text):
+			answer_input.text = ""
 
 
 # deselect all selections
@@ -56,9 +64,6 @@ func add_update_question():
 		add_multiple_choice()
 	else:
 		add_identification()
-	
-	clear_inputs()
-	refresh_questions()
 
 # refresh item list for new questions
 func refresh_questions():
@@ -73,13 +78,16 @@ func add_identification():
 	var question = question_input.text.strip_edges()
 	var answer = answer_input.text.strip_edges()
 	# validate question and answer inputs
-	if question != "" or answer != "":
+	if question != "" and answer != "":
 		var question_item = {
 			"type": "identification",
 			"question": question.to_lower(),
 			"answer": answer.to_lower()
 		}
 		questions.append(question_item)
+		
+		clear_inputs()
+		refresh_questions()
 	else:
 		if question_input.text == "":
 			question_error_label.show()
@@ -99,7 +107,7 @@ func add_multiple_choice():
 	var option4 = option_4_input.text.strip_edges().to_lower()
 	var question = question_input.text.strip_edges().to_lower()
 	var answer = answer_input.text.strip_edges().to_lower()
-	if option1 != "" or option2 != "" or option3 != "" or option4 != "" or question != "" or answer != "":
+	if option1 != "" and option2 != "" and option3 != "" and option4 != "" and question != "" and answer != "":
 		var question_item = {
 			"type": "multiple_choice",
 			"question": question,
@@ -107,6 +115,9 @@ func add_multiple_choice():
 			"answer": answer
 		}
 		questions.append(question_item)
+		
+		clear_inputs()
+		refresh_questions()
 	else:
 		if question_input.text == "":
 			question_error_label.show()
@@ -146,6 +157,7 @@ func hide_multiple_choice():
 func toggle_multiple_choice(toggled_on: bool):
 	if toggled_on:
 		answer_input.show()
+		answer_label.show()
 		option_1_input.show()
 		option_2_input.show()
 		option_3_input.show()
@@ -155,6 +167,7 @@ func toggle_multiple_choice(toggled_on: bool):
 		option_2_input.hide()
 		option_3_input.hide()
 		option_4_input.hide()
+		answer_label.hide()
 	question_error_label.hide()
 	option_1_error_label.hide()
 	option_2_error_label.hide()
