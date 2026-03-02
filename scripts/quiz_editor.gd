@@ -12,6 +12,12 @@ extends Control
 @onready var clear_inputs_button = $MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer/ClearInputs
 @onready var delete_button = $MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer/Delete
 @onready var clear_selections_button = $MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer/ClearSelections
+@onready var question_error_label = $MarginContainer/HSplitContainer/VBoxContainer/QuestionError
+@onready var option_1_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option1Error
+@onready var option_2_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option2Error
+@onready var option_3_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option3Error
+@onready var option_4_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option4Error
+@onready var answer_error_label = $MarginContainer/HSplitContainer/VBoxContainer/AnswerError
 
 var questions = []
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +28,7 @@ func _ready() -> void:
 	clear_inputs_button.connect("pressed", clear_inputs)
 	delete_button.connect("pressed", delete_question)
 	clear_selections_button.connect("pressed", clear_questions_item_list_selections)
+
 
 # deselect all selections
 func clear_questions_item_list_selections():
@@ -45,9 +52,9 @@ func clear_inputs():
 
 # add new question or update existing question
 func add_update_question():
-	if multiple_choice_checkbutton.toggled:
+	if multiple_choice_checkbutton.button_pressed:
 		add_multiple_choice()
-	elif !multiple_choice_checkbutton.toggled:
+	else:
 		add_identification()
 	
 	clear_inputs()
@@ -62,25 +69,70 @@ func refresh_questions():
 # Both answer in identification and multiple choice are
 # in lowercase
 func add_identification():
-	var question_item = {
-		"type": "identification",
-		"question": question_input.text.edges(),
-		"answer": answer_input.text.strip_edges().to_lower()
-	}
-	questions.append(question_item)
+	var duration = 5.0
+	var question = question_input.text.strip_edges()
+	var answer = answer_input.text.strip_edges()
+	# validate question and answer inputs
+	if question != "" or answer != "":
+		var question_item = {
+			"type": "identification",
+			"question": question.to_lower(),
+			"answer": answer.to_lower()
+		}
+		questions.append(question_item)
+	else:
+		if question_input.text == "":
+			question_error_label.show()
+			question_error_label.text = "question can't be empty"
+		if answer_input.text == "":
+			answer_error_label.show()
+			answer_error_label.text = "answer can't be empty"
+		await get_tree().create_timer(duration).timeout
+		question_error_label.hide()
+		answer_error_label.hide()
 
 func add_multiple_choice():
+	var duration = 5.0
 	var option1 = option_1_input.text.strip_edges().to_lower()
 	var option2 = option_2_input.text.strip_edges().to_lower()
 	var option3 = option_3_input.text.strip_edges().to_lower()
 	var option4 = option_4_input.text.strip_edges().to_lower()
-	var question_item = {
-		"type": "multiple_choice",
-		"question": question_input.text.strip_edges(),
-		"options": [option1, option2, option3, option4],
-		"answer": answer_input.text.strip_edges()
-	}
-	questions.append(question_item)
+	var question = question_input.text.strip_edges().to_lower()
+	var answer = answer_input.text.strip_edges().to_lower()
+	if option1 != "" or option2 != "" or option3 != "" or option4 != "" or question != "" or answer != "":
+		var question_item = {
+			"type": "multiple_choice",
+			"question": question,
+			"options": [option1, option2, option3, option4],
+			"answer": answer
+		}
+		questions.append(question_item)
+	else:
+		if question_input.text == "":
+			question_error_label.show()
+			question_error_label.text = "question can't be empty"
+		if option_1_input.text == "":
+			option_1_error_label.show()
+			option_1_error_label.text = "option 1 can't be empty"
+		if option_2_input.text == "":
+			option_2_error_label.show()
+			option_2_error_label.text = "option 2 can't be empty"
+		if option_3_input.text == "":
+			option_3_error_label.show()
+			option_3_error_label.text = "option 3 can't be empty"
+		if option_4_input.text == "":
+			option_4_error_label.show()
+			option_4_error_label.text = "option 4 can't be empty"
+		if answer_input.text == "":
+			answer_error_label.show()
+			answer_error_label.text = "answer can't be empty"
+		await get_tree().create_timer(duration).timeout
+		question_error_label.hide()
+		option_1_error_label.hide()
+		option_2_error_label.hide()
+		option_3_error_label.hide()
+		option_4_error_label.hide()
+		answer_error_label.hide()
 
 # hide text inputs related to multiple choice
 func hide_multiple_choice():
@@ -93,17 +145,22 @@ func hide_multiple_choice():
 # toggle text inputs for multiple choice or identification
 func toggle_multiple_choice(toggled_on: bool):
 	if toggled_on:
-		answer_input.hide()
+		answer_input.show()
 		option_1_input.show()
 		option_2_input.show()
 		option_3_input.show()
 		option_4_input.show()
 	else:
-		answer_input.show()
 		option_1_input.hide()
 		option_2_input.hide()
 		option_3_input.hide()
 		option_4_input.hide()
+	question_error_label.hide()
+	option_1_error_label.hide()
+	option_2_error_label.hide()
+	option_3_error_label.hide()
+	option_4_error_label.hide()
+	answer_error_label.hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bayl5swv4jvty"]
 
 [ext_resource type="Script" uid="uid://buxpwg1td8e7n" path="res://scripts/quiz_editor.gd" id="1_0yhu0"]
+[ext_resource type="Theme" uid="uid://b0ptjv41slxib" path="res://resources/error_label.tres" id="2_lvq7x"]
 
 [node name="QuizEditor" type="Control" unique_id=797630427]
 layout_mode = 3
@@ -42,30 +43,60 @@ layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Question here..."
 
+[node name="QuestionError" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1382696862]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
+
 [node name="Option1" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=755765611]
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "Option A..."
+placeholder_text = "Option 1..."
+
+[node name="Option1Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1021095872]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
 
 [node name="Option2" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=499331808]
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "Option B..."
+placeholder_text = "Option 2..."
+
+[node name="Option2Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=821292007]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
 
 [node name="Option3" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=109481400]
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "Option C..."
+placeholder_text = "Option 3..."
+
+[node name="Option3Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=592525466]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
 
 [node name="Option4" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1227894029]
 layout_mode = 2
 size_flags_vertical = 3
-placeholder_text = "Option D..."
+placeholder_text = "Option 4..."
+
+[node name="Option4Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=417194758]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
 
 [node name="Answer" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=13026935]
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Answer..."
+
+[node name="AnswerError" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=2068469921]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_lvq7x")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=794016847]
 layout_mode = 2
