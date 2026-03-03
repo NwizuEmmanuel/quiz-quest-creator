@@ -33,6 +33,21 @@ touch_dragger_enabled = true
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=877736398]
+layout_mode = 2
+
+[node name="FileNameLabel" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer2" unique_id=1468870435]
+layout_mode = 2
+text = "File name"
+
+[node name="FileNameLineEdit" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer2" unique_id=198101601]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FileNameSaveButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer2" unique_id=1023334551]
+layout_mode = 2
+text = "SAVE"
+
 [node name="MultipleChoice" type="CheckButton" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1220356747]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -49,36 +64,44 @@ visible = false
 layout_mode = 2
 theme = ExtResource("2_lvq7x")
 
-[node name="Option1" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=816267556]
+[node name="Option1" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1052202955]
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Option 1..."
+wrap_mode = 1
 
 [node name="Option1Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1021095872]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_lvq7x")
 
-[node name="Option2" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=802346611]
+[node name="Option2" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1174372309]
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Option 2..."
+wrap_mode = 1
 
 [node name="Option2Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=821292007]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_lvq7x")
 
-[node name="Option3" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=365710932]
+[node name="Option3" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=2066686493]
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Option 3..."
+wrap_mode = 1
 
 [node name="Option3Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=592525466]
 visible = false
 layout_mode = 2
 theme = ExtResource("2_lvq7x")
 
-[node name="Option4" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=1236718274]
+[node name="Option4" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=254552762]
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Option 4..."
+wrap_mode = 1
 
 [node name="Option4Error" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=417194758]
 visible = false
@@ -95,9 +118,11 @@ min_value = 1.0
 max_value = 4.0
 value = 1.0
 
-[node name="IdentificationAnswer" type="LineEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=424278266]
+[node name="IdentificationAnswer" type="TextEdit" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=558914226]
 layout_mode = 2
+size_flags_vertical = 3
 placeholder_text = "Answer..."
+wrap_mode = 1
 
 [node name="AnswerError" type="Label" parent="MarginContainer/HSplitContainer/VBoxContainer" unique_id=2068469921]
 visible = false
@@ -127,17 +152,16 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HSplitContainer/VBoxContainer2" unique_id=1812334956]
-layout_mode = 2
-
-[node name="Delete" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer" unique_id=1201433527]
+[node name="DeleteQuestionButton" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer2" unique_id=1201433527]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "DELETE"
 
-[node name="ClearSelections" type="Button" parent="MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer" unique_id=1195332330]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "CLEAR SELECTION"
+[node name="OverwriteDialog" type="ConfirmationDialog" parent="." unique_id=237415065]
+oversampling_override = 1.0
+size = Vector2i(281, 100)
+dialog_text = "Are you sure to overwrite this file?"
 
+[connection signal="pressed" from="MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer2/FileNameSaveButton" to="." method="_on_file_name_save_button_pressed"]
 [connection signal="item_activated" from="MarginContainer/HSplitContainer/VBoxContainer2/QuestionsList" to="." method="_on_questions_list_item_activated"]
+[connection signal="confirmed" from="OverwriteDialog" to="." method="_on_overwrite_dialog_confirmed"]

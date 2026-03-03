@@ -11,8 +11,7 @@ extends Control
 @onready var questions_item_list = $MarginContainer/HSplitContainer/VBoxContainer2/QuestionsList
 @onready var add_update_button = $MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer/AddUpdate
 @onready var clear_inputs_button = $MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer/ClearInputs
-@onready var delete_button = $MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer/Delete
-@onready var clear_selections_button = $MarginContainer/HSplitContainer/VBoxContainer2/HBoxContainer/ClearSelections
+@onready var delete_question_button = $MarginContainer/HSplitContainer/VBoxContainer2/DeleteQuestionButton
 @onready var question_error_label = $MarginContainer/HSplitContainer/VBoxContainer/QuestionError
 @onready var option_1_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option1Error
 @onready var option_2_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option2Error
@@ -20,23 +19,19 @@ extends Control
 @onready var option_4_error_label = $MarginContainer/HSplitContainer/VBoxContainer/Option4Error
 @onready var answer_error_label = $MarginContainer/HSplitContainer/VBoxContainer/AnswerError
 @onready var multiple_choice_answer_label = $MarginContainer/HSplitContainer/VBoxContainer/MultipleChoiceAnswerLabel
+@onready var overwrite_dialog = $OverwriteDialog
 
 
 var questions = []
 var updating_question = false
+var file_name = ""
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide_multiple_choice()
 	multiple_choice_checkbutton.connect("toggled", toggle_multiple_choice)
 	add_update_button.connect("pressed",add_update_question)
 	clear_inputs_button.connect("pressed", clear_inputs)
-	delete_button.connect("pressed", delete_question)
-	clear_selections_button.connect("pressed", clear_questions_item_list_selections)
-
-
-# deselect all selections
-func clear_questions_item_list_selections():
-	questions_item_list.deselect_all()
+	delete_question_button.connect("pressed", delete_question)
 
 # remove selected question
 func delete_question():
@@ -47,6 +42,8 @@ func delete_question():
 
 # clear all text inputs
 func clear_inputs():
+	updating_question = false
+	questions_item_list.deselect_all()
 	question_input.clear()
 	option_1_input.clear()
 	option_2_input.clear()
@@ -211,3 +208,28 @@ func _on_questions_list_item_activated(index: int) -> void:
 	else:
 		multiple_choice_checkbutton.button_pressed = false
 		identification_answer_input.text = questions[index]["answer"]
+
+func save_to_file():
+	var folder_path = "user://quizzes"
+	if not DirAccess.dir_exists_absolute(folder_path):
+		DirAccess.make_dir_absolute(folder_path)
+	
+	var json_string = JSON.stringify(questions, "\t")
+	var file_path = folder_path + file_name + ".qf"
+	
+	if FileAccess.file_exists(file_path):
+		overwrite_dialog.popup_centered()
+		
+	var file = FileAccess.open(file_path, FileAccess.WRITE)
+	
+	if file:
+		file.store_string(json_string)
+		file.close()
+	
+func _on_file_name_save_button_pressed() -> void:
+	var file_name_line_edit = $MarginContainer/HSplitContainer/VBoxContainer/HBoxContainer2/FileNameLineEdit
+	file_name = file_name_line_edit.text
+
+
+func _on_overwrite_dialog_confirmed() -> void:
+	save_to_file()
