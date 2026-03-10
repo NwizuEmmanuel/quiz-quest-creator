@@ -26,7 +26,6 @@ window/stretch/aspect="expand"
 [gui]
 
 theme/custom="uid://dc6o4gyd3plt7"
-theme/custom_font="uid://dw6hp4bfbwol6"
 
 [input]
 

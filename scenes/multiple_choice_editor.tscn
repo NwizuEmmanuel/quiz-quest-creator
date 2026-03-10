@@ -15,82 +15,72 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -316.0
-offset_top = -568.0
-offset_right = 316.0
+offset_left = -314.0
+offset_top = -573.0
+offset_right = 318.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 0
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" unique_id=1816474016]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" unique_id=960213988]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=379731348]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1306649713]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1306649713]
 layout_mode = 2
 text = "Question"
 
-[node name="TextEdit" type="TextEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1378961753]
+[node name="TextEdit" type="TextEdit" parent="ScrollContainer/VBoxContainer" unique_id=1378961753]
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Question here"
 
-[node name="Label2" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1256971809]
+[node name="Label2" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1256971809]
 layout_mode = 2
 text = "Option 1"
 
-[node name="LineEdit" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1833044127]
+[node name="LineEdit" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=1833044127]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1677623742]
+[node name="Label3" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1677623742]
 layout_mode = 2
 text = "Option 2"
 
-[node name="LineEdit2" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1907552510]
+[node name="LineEdit2" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=1907552510]
 layout_mode = 2
 
-[node name="Label4" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1304634561]
+[node name="Label4" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=1304634561]
 layout_mode = 2
 text = "Option 3"
 
-[node name="LineEdit3" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=943183829]
+[node name="LineEdit3" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=943183829]
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=168898158]
+[node name="Label5" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=168898158]
 layout_mode = 2
 text = "Option 4"
 
-[node name="LineEdit4" type="LineEdit" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1007367158]
+[node name="LineEdit4" type="LineEdit" parent="ScrollContainer/VBoxContainer" unique_id=1007367158]
 layout_mode = 2
 
-[node name="Label6" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=261175727]
+[node name="Label6" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=261175727]
 layout_mode = 2
 text = "Points"
 
-[node name="SpinBox" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=81790005]
+[node name="SpinBox" type="SpinBox" parent="ScrollContainer/VBoxContainer" unique_id=81790005]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Label7" type="Label" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=2001139614]
+[node name="Label7" type="Label" parent="ScrollContainer/VBoxContainer" unique_id=2001139614]
 layout_mode = 2
 text = "Duration(time to be spent on question)"
 
-[node name="SpinBox2" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=133245691]
+[node name="SpinBox2" type="SpinBox" parent="ScrollContainer/VBoxContainer" unique_id=133245691]
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Button" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer" unique_id=1052969492]
+[node name="Button" type="Button" parent="ScrollContainer/VBoxContainer" unique_id=1052969492]
 layout_mode = 2
 text = "SAVE"
 

@@ -1,0 +1,277 @@
+[gd_scene format=3 uid="uid://bayl5swv4jvty"]
+
+[ext_resource type="ButtonGroup" uid="uid://bhfc1ecb7j6ye" path="res://resources/character_case_check_box.res" id="1_0yhu0"]
+
+[node name="QuizEditor" type="Control" unique_id=698393837]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=392961276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=394865007]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=648311729]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=169869726]
+layout_mode = 2
+text = "QUIZ EDITOR"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=336693488]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1490999042]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+current_tab = 1
+
+[node name="Multiple Choice" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer" unique_id=960786703]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice" unique_id=1909318634]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=1308238251]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer" unique_id=1319516802]
+layout_mode = 2
+text = "Question"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer" unique_id=1145774956]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Eg. What is godot engine primary scripting language"
+wrap_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=1036654965]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer2" unique_id=656045073]
+layout_mode = 2
+text = "Option 1"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer2" unique_id=474907064]
+layout_mode = 2
+placeholder_text = "Eg. C#"
+clear_button_enabled = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=498102326]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer3" unique_id=1084774100]
+layout_mode = 2
+text = "Option 2"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer3" unique_id=872410506]
+layout_mode = 2
+placeholder_text = "Eg. Unreal"
+clear_button_enabled = true
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=2042505099]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer4" unique_id=782051824]
+layout_mode = 2
+text = "Option 3"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer4" unique_id=1224505619]
+layout_mode = 2
+placeholder_text = "Eg. Javascript"
+clear_button_enabled = true
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=242149957]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer5" unique_id=1261553635]
+layout_mode = 2
+text = "Option 4"
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/VBoxContainer5" unique_id=1603638348]
+layout_mode = 2
+placeholder_text = "Eg. Godot Script"
+clear_button_enabled = true
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=2104773290]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer6" unique_id=1356855580]
+layout_mode = 2
+text = "Points"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer6" unique_id=826542376]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=1664466446]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer7" unique_id=362623765]
+layout_mode = 2
+text = "Duration"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer7" unique_id=157062939]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=480554781]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer8" unique_id=1818001823]
+layout_mode = 2
+text = "Answer(must be 1-4 corresponding the options)"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer8" unique_id=1823879879]
+layout_mode = 2
+min_value = 1.0
+max_value = 4.0
+value = 1.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer" unique_id=1654056997]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer" unique_id=2139175106]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ADD"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Multiple Choice/VBoxContainer/HBoxContainer" unique_id=1982699958]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CLEAR/CANCEL"
+
+[node name="Identification" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer" unique_id=1541347230]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification" unique_id=714065455]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=1773490594]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/VBoxContainer" unique_id=1131188749]
+layout_mode = 2
+text = "Question"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/VBoxContainer" unique_id=341679819]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Eg. Godot engine is?"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=1524407918]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/VBoxContainer2" unique_id=1966204343]
+layout_mode = 2
+text = "Answer"
+
+[node name="TextEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/VBoxContainer2" unique_id=1454690724]
+layout_mode = 2
+placeholder_text = "Eg. game engine"
+clear_button_enabled = true
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=1651485366]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer3" unique_id=1861449321]
+layout_mode = 2
+text = "Answer character case"
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer3" unique_id=1225260643]
+layout_mode = 2
+button_group = ExtResource("1_0yhu0")
+text = "uppercase"
+
+[node name="CheckBox2" type="CheckBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer3" unique_id=478208320]
+layout_mode = 2
+button_group = ExtResource("1_0yhu0")
+text = "lowercase"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=1563657276]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer" unique_id=692871875]
+layout_mode = 2
+text = "Points"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer" unique_id=1741147044]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=728031895]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer2" unique_id=872976895]
+layout_mode = 2
+text = "Duration"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer2" unique_id=319843998]
+layout_mode = 2
+min_value = 1.0
+value = 1.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer" unique_id=1891831228]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer4" unique_id=1131545914]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "ADD"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/TabContainer/Identification/VBoxContainer/HBoxContainer4" unique_id=2090422354]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CLEAR/CANCEL"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1672709759]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1311650580]
+layout_mode = 2
+text = "Total Questions: 12"
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=761974696]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1549234797]
+layout_mode = 2
+text = "DELETE"

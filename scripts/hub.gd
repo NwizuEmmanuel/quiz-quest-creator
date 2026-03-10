@@ -7,4 +7,4 @@ func _ready() -> void:
 
 
 func _on_create_quiz_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/question_type.tscn")
+	get_tree().change_scene_to_file("res://scenes/quiz_editor.tscn")
