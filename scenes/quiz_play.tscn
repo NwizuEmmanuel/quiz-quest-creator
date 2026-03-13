@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://dlvqvhbykcels"]
+
+[ext_resource type="Script" uid="uid://cuvsy0wk7aqtv" path="res://scripts/quiz_play.gd" id="1_ypbgi"]
+
+[node name="QuizPlay" type="Control" unique_id=1778954248]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ypbgi")

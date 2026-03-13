@@ -42,7 +42,6 @@ text = "QUIZ EDITOR"
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-scroll_vertical = 100
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer" unique_id=1472414883]
 layout_mode = 2
@@ -173,7 +172,7 @@ layout_mode = 2
 [node name="AddButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=511154654]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "add"
+text = "add/update"
 
 [node name="ClearButton" type="Button" parent="PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1144340711]
 layout_mode = 2
@@ -200,3 +199,5 @@ position = Vector2i(0, 36)
 
 [connection signal="item_selected" from="PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer/QuestionTypeOptionButton" to="." method="_on_question_type_option_button_item_selected"]
 [connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/AddButton" to="." method="_on_add_button_pressed"]
+[connection signal="item_activated" from="PanelContainer/HBoxContainer/VBoxContainer/QuizEditorItemList" to="." method="_on_quiz_editor_item_list_item_activated"]
+[connection signal="pressed" from="PanelContainer/HBoxContainer/VBoxContainer/DeleteButton" to="." method="_on_delete_button_pressed"]

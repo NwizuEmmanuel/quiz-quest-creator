@@ -64,3 +64,12 @@ func _on_quiz_title_item_list_item_activated(index: int) -> void:
 	var selected_index = %QuizTitleItemList.get_selected_items()[0]
 	QuizData.quiz_title = %QuizTitleItemList.get_item_text(selected_index)
 	get_tree().change_scene_to_file("res://scenes/quiz_editor.tscn")
+
+
+func _on_play_button_pressed() -> void:
+	var index = %QuizTitleItemList.get_selected_items()[0]
+	var selected_quiz = %QuizTitleItemList.get_item_metadata(index)
+	QuizData.quiz_path = selected_quiz
+	var selected_index = %QuizTitleItemList.get_selected_items()[0]
+	QuizData.quiz_title = %QuizTitleItemList.get_item_text(selected_index)
+	get_tree().change_scene_to_file("res://scenes/quiz_play.tscn")
