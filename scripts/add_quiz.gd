@@ -4,17 +4,18 @@ extends Node
 func _ready() -> void:
 	list_quiz_files()
 
+func show_alert_dialog(title:String,dialog_text:String):
+	%AddQuizAlertDialog.title = title
+	%AddQuizAlertDialog.dialog_text = dialog_text
+	%AddQuizAlertDialog.popup_centered()
+
 func add_quiz():
 	var path = "user://quizzes/"
 	if %QuizTitleLineEdit.text == "":
-		%AlertDialog.title = "WARNING"
-		%AlertDialog.dialog_text = "TITLE IS REQUIRED"
-		%AlertDialog.popup_centered_clamped()
+		show_alert_dialog("WARNING", "TITLE IS REQUIRED")
 	else:
 		if FileAccess.file_exists("user://quizzes/" + %QuizTitleLineEdit.text + ".res"):
-			%AlertDialog.title = "WARNING"
-			%AlertDialog.dialog_text = "QUIZ ALREADY EXISTS"
-			%AlertDialog.popup_centered_clamped(Vector2i(230,100))
+			show_alert_dialog("WARNING", "QUIZ ALREADY EXISTS")
 			return 
 		path += %QuizTitleLineEdit.text + ".res"
 		DirAccess.make_dir_recursive_absolute("user://quizzes")
@@ -70,6 +71,49 @@ func _on_edit_button_pressed() -> void:
 		QuizData.quiz_title = %QuizTitleItemList.get_item_text(selected_index)
 		get_tree().change_scene_to_file("res://scenes/quiz_editor.tscn")
 	else:
-		%AlertDialog.title = "WARNING"
-		%AlertDialog.dialog_text = "SELECT A QUIZ"
-		%AlertDialog.popup_centered()
+		show_alert_dialog("WARNING", "SELECT A QUIZ")
+
+
+func _on_export_button_pressed() -> void:
+	%AddQuizFileDialog.popup_centered()
+
+
+func _on_add_quiz_file_dialog_dir_selected(dir: String) -> void:
+	# 1. Safety check: Ensure something is actually selected
+	var selected_items = %QuizTitleItemList.get_selected_items()
+	if selected_items.size() == 0:
+		show_alert_dialog("ERROR", "NO QUIZ SELECTED")
+		return
+		
+	var selected_index = selected_items[0]
+	var quiz_title = %QuizTitleItemList.get_item_text(selected_index)
+	var selected_item = %QuizTitleItemList.get_item_metadata(selected_index)
+	
+	# 2. Format the timestamp (Removing 'T' and ':')
+	var raw_time = Time.get_datetime_string_from_system().replace(":", "-").replace("T", "_")
+	
+	# 3. Use path_join to ensure there is a "/" between the folder and filename
+	var file_name = quiz_title + "_" + raw_time + ".res"
+	var full_path = dir.path_join(file_name)
+	
+	# 4. Perform the copy
+	var error = DirAccess.copy_absolute(selected_item, full_path)
+	
+	if error == OK:
+		show_alert_dialog("SUCCESS", "QUIZ EXPORTED SUCCESSFULLY")
+	else:
+		# Useful for debugging: prints the specific error code
+		print("Export failed with error code: ", error) 
+		show_alert_dialog("ERROR", "OPERATION FAILED")
+
+
+func _on_go_to_hub_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/hub.tscn")
+
+
+func _on_play_button_pressed() -> void:
+	var selected_items = %QuizTitleItemList.get_selected_items()
+	var index = selected_items[0]
+	QuizData.quiz_title = %QuizTitleItemList.get_item_text(index)
+	QuizData.quiz_path = %QuizTitleItemList.get_item_metadata(index)
+	get_tree().change_scene_to_file("res://scenes/quiz_play.tscn")

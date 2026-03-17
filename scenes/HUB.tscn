@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6xti"]
 texture = ExtResource("2_d1od2")
 
-[node name="Hub" type="Control" unique_id=696805602]
+[node name="Hub" type="Control" unique_id=1484905596]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,9 +32,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -171.0
-offset_top = -74.75
+offset_top = -108.4375
 offset_right = 171.0
-offset_bottom = 74.75
+offset_bottom = 108.4375
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -48,4 +48,11 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CREATE QUIZ"
 
+[node name="ExitGameButton" type="Button" parent="VBoxContainer" unique_id=1382486239]
+layout_mode = 2
+size_flags_vertical = 3
+text = "EXIT GAME"
+
+[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreateQuizButton" to="." method="_on_create_quiz_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
