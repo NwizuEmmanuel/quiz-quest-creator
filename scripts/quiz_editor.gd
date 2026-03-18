@@ -45,7 +45,7 @@ func add_multiple_choice():
 	for i in options:
 		question_item.options.append(i)
 	question_item.points = %PointsSpinBox.value
-	question_item.duration = %TimeLimitSpinBox.value
+	question_item.time_limit = %TimeLimitSpinBox.value
 	question_item.correct_option = %MultipleChoiceAnswerSpinBox.value
 	
 	var q = load(QuizData.quiz_path)
@@ -68,7 +68,7 @@ func add_identification():
 	item.text = %QuestionTextTextEdit.text.strip_edges()
 	item.correct_answer = %IdentificationAnswerLineEdit.text.to_upper().strip_edges()
 	item.points = %PointsSpinBox.value
-	item.duration = %TimeLimitSpinBox.value
+	item.time_limit = %TimeLimitSpinBox.value
 	
 	var q = load(QuizData.quiz_path) as Questions
 	q.title = QuizData.quiz_title
@@ -163,7 +163,7 @@ func _on_quiz_editor_item_list_item_activated(index: int) -> void:
 			enable_identification()
 			disable_multiple_choice()
 		%PointsSpinBox.value = selected_question.points
-		%TimeLimitSpinBox.value = selected_question.duration
+		%TimeLimitSpinBox.value = selected_question.time_limit
 
 
 func _on_go_back_button_pressed() -> void:
@@ -195,7 +195,7 @@ func _on_update_question_confirmation_dialog_confirmed() -> void:
 		item.correct_answer = %IdentificationAnswerLineEdit.text.strip_edges().to_upper()
 		
 	item.points = %PointsSpinBox.value
-	item.duration = %TimeLimitSpinBox.value
+	item.time_limit = %TimeLimitSpinBox.value
 	
 	q.questions[selected_index] = item
 	ResourceSaver.save(q, QuizData.quiz_path)

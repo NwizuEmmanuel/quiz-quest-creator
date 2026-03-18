@@ -12,4 +12,4 @@ enum QuestionType {
 @export var correct_option: int
 @export var correct_answer: String
 @export var points: int
-@export var duration: int
+@export var time_limit: int
