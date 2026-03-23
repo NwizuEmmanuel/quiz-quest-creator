@@ -6,7 +6,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45nl3"]
 texture = ExtResource("2_obeme")
 
-[node name="SelectQuizPlay" type="Control" unique_id=95589843]
+[node name="SelectQuiz" type="Control" unique_id=95589843]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

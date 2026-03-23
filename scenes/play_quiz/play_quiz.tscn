@@ -132,6 +132,7 @@ horizontal_alignment = 2
 [node name="PlayerLifeBar" type="ProgressBar" parent="MarginContainer2/PlayerLifeBox" unique_id=1074713926]
 unique_name_in_owner = true
 layout_mode = 2
+value = 100.0
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=987594246]
 layout_mode = 1
@@ -154,6 +155,7 @@ text = "Boss"
 [node name="BossLifeBar" type="ProgressBar" parent="MarginContainer/BossLifeBox" unique_id=1590230205]
 unique_name_in_owner = true
 layout_mode = 2
+value = 100.0
 
 [node name="QuizDialog" type="AcceptDialog" parent="." unique_id=282486625]
 unique_name_in_owner = true
@@ -176,16 +178,19 @@ theme_override_constants/separation = 10
 [node name="ScoreLabel" type="Label" parent="MarginContainer3/VBoxContainer" unique_id=1269127858]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Score: 0/0"
 horizontal_alignment = 1
 
 [node name="TimerLabel" type="Label" parent="MarginContainer3/VBoxContainer" unique_id=461672402]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Time: 0"
 horizontal_alignment = 1
 
 [node name="DefeatBossPoint" type="Label" parent="MarginContainer3/VBoxContainer" unique_id=163063171]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Defeat Boss Point: 0"
 horizontal_alignment = 1
 
 [node name="QuizTimer" type="Timer" parent="." unique_id=1013348502]

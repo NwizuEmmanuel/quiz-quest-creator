@@ -24,21 +24,9 @@ buses/default_bus_layout=""
 QuizData="*uid://c3cfiuef2xc2q"
 PrepareData="*uid://b7bl4mtnll7ai"
 
-[display]
-
-window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
-
 [gui]
 
 theme/custom="uid://dc6o4gyd3plt7"
-
-[input]
-
-go_to_hub={
-"deadzone": 0.2,
-"events": []
-}
 
 [physics]
 
