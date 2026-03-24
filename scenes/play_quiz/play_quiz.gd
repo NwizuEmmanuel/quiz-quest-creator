@@ -1,167 +1,145 @@
-extends Node
+extends Control
 
-var quiz_file: Questions
-var quiz_items: Array[QuestionItem] = []
+var current_quiz_index = 0
+var questions: Questions
+var quiz_items: Array[QuestionItem]
 var total_questions = 0
-var current = 0
 var score = 0
 var GRACE_POINT = 0.5
-var player_life = 100
-var boss_life = 100
-var defeat_boss_point = 0.0
-var failed_questions_indexes = []
+var boss_life = 100.0
+var player_life = 100.0
+var defeated_boss = false
+var identification_answer = ""
+var multiple_choice_answer = 0
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	quiz_file = load(QuizData.quiz_path) as Questions
-	quiz_items = quiz_file.questions
+	if load(QuizData.quiz_path) != null:
+		questions = load(QuizData.quiz_path) as Questions
+		quiz_items = questions.questions
 	total_questions = quiz_items.size()
-	display_question()
+	run_quiz()
 
 
-func set_defeat_boss_point():
-	# set defeat boss point with remaining player life after
-	# boss is defeated
-	if boss_life == 0.0:
-		defeat_boss_point = player_life
-		print(defeat_boss_point)
-	%DefeatBossPoint.text = "Defeat Boss Point: %d" % defeat_boss_point
+func _process(_delta: float) -> void:
+	%TimerLabel.text = "TIME: %d" % int(%QuizTimer.time_left)
+	%ScoreLabel.text = "SCORE: %d/%d" % [score, total_questions]
+	if %QuizTimer.time_left == 0.0:
+		current_quiz_index += 1
+		run_quiz()
 
-func display_question():
-	if current < total_questions:
-		var q = quiz_items[current]
-		var question_text = "[b]%d: %s[/b] \n\n" % [current + 1, q.text]
-		var options_text = ""  
-		
-		if q.question_type == QuestionItem.QuestionType.MULTIPLE_CHOICE:
-			options_text += "A: %s\n" %q.options[0]
-			options_text += "B: %s\n" %q.options[1]
-			options_text += "C: %s\n" %q.options[2]
-			options_text += "D: %s\n" %q.options[3]
-			%OptionsText.text = options_text
-			%IdentificationAnswerBox.hide()
-			%MultipleChoiceOptionsBox.show()
-			%OptionsText.show()
-		elif q.question_type == QuestionItem.QuestionType.IDENTIFICATION:
-			%IdentificationAnswerBox.show()
-			%MultipleChoiceOptionsBox.hide()
-			%OptionsText.hide()
-		%QuestionText.text = question_text
-		%QuizTimer.start(q.time_limit)
-	else:
-		save_quiz_data()
+
+func save_data():
+	QuizData.score = score
+	QuizData.total_questions = total_questions
+	QuizData.defeated_boss = defeated_boss
+	DirAccess.make_dir_recursive_absolute("user://data")
+	var quiz_title = QuizData.quiz_title
+	var player_stats = PlayerStats.new()
+	player_stats.score = score
+	player_stats.defeated_boss = defeated_boss
+	player_stats.quiz_title = quiz_title
+	ResourceSaver.save(player_stats, "user://data/"+quiz_title+".res")
+
+func deal_damage() -> float:
+	if total_questions <= 0:
+		return 0
+	if %QuizTimer.is_stopped():
+		return 0
+	var time_left = %QuizTimer.time_left
+	var damage_point = 100.0 / max(1, total_questions - GRACE_POINT)
+	return damage_point + time_left
+
+func deal_boss_damage():
+	boss_life = max(0, boss_life - deal_damage())
+	%BossLifeBar.value = boss_life
+
+
+func deal_player_damage():
+	player_life = max(0, player_life - deal_damage())
+	%PlayerLifeBar.value = player_life
+
+func run_quiz():
+	if  current_quiz_index >= total_questions:
+		# check if boss is defeated
+		if boss_life == 0:
+			defeated_boss = true
+		save_data()
+		print(QuizData.defeated_boss)
 		get_tree().change_scene_to_file("res://scenes/quiz_result/quiz_result.tscn")
+		return
+	
+	var quiz = quiz_items[current_quiz_index]
+	%QuizTimer.start(quiz.time_limit)
+	
+	%QuestionText.text = str(current_quiz_index+1)+": "+quiz.text
+	if quiz.question_type == QuestionItem.QuestionType.IDENTIFICATION:
+		%OptionsTextBox.hide()
+		%IdentificationAnswerBox.show()
+		%IdentificationAnswerLineEdit.grab_focus()
+		%MultipleChoiceOptionsBox.hide()
+	elif quiz.question_type == QuestionItem.QuestionType.MULTIPLE_CHOICE:
+		%IdentificationAnswerBox.hide()
+		%OptionsTextBox.show()
+		%MultipleChoiceOptionsBox.show()
+		%OptionsText1.text = "A: "+quiz.options[0]
+		%OptionsText2.text = "B: "+quiz.options[1]
+		%OptionsText3.text = "C: "+quiz.options[2]
+		%OptionsText4.text = "D: "+quiz.options[3]
 
 
-func check_multiple_choice_answer(ans: int):
-	var failed_quiz = {}
-	var q = quiz_items[current]
-	if q.question_type == QuestionItem.QuestionType.MULTIPLE_CHOICE:
-		if q.correct_option == ans:
-			score += 1
-			deal_boss_damage()
-		else:
-			deal_player_damage()
-			failed_quiz = {"id": current, "choice": ans}
-			QuizData.failed_questions.append(failed_quiz)
-	set_defeat_boss_point()
+func show_player_mssg(mssg: String):
+	%PlayerMssg.text = mssg
+	await get_tree().create_timer(1.5).timeout
+	%PlayerMssg.text = ""
 
 
 func check_identification_answer(ans: String):
-	var failed_quiz = {}
-	var q = quiz_items[current]
-	if q.question_type == QuestionItem.QuestionType.IDENTIFICATION:
-		if ans.to_upper() in q.correct_answer:
+	if current_quiz_index < total_questions:
+		var quiz = quiz_items[current_quiz_index]
+		if ans.to_upper() == quiz.correct_answer.to_upper():
 			score += 1
 			deal_boss_damage()
+			show_player_mssg("CORRECT")
 		else:
 			deal_player_damage()
-			failed_quiz = {"id": current, "choice": ans.to_upper()}
-			QuizData.failed_questions.append(failed_quiz)
-	set_defeat_boss_point()
+			show_player_mssg("WRONG")
+	current_quiz_index += 1
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	%TimerLabel.text = "TIME: %d" % %QuizTimer.time_left
-	%ScoreLabel.text = "SCORE: %d/%d" % [score,total_questions]
-	timer_label_change_color_timer_stopped()
-
-
-func deal_damage() -> float:
-	var result = 0
-	if !%QuizTimer.is_stopped():
-		var time_left = %QuizTimer.time_left + 1
-		var damage_point = 100 / (total_questions - GRACE_POINT)
-		result = damage_point + time_left
-	return result
-
-func timer_label_change_color_timer_stopped():
-	if %QuizTimer.is_stopped():
-		%TimerLabel.add_theme_color_override("font_color",Color.RED)
-	else:
-		%TimerLabel.add_theme_color_override("font_color",Color.YELLOW)
-
-func deal_boss_damage():
-	boss_life -= deal_damage()
-	%BossLifeBar.value = boss_life
-
-func deal_player_damage():
-	player_life -= deal_damage()
-	%PlayerLifeBar.value = player_life
-
-func save_quiz_data():
-	var path = "user://data/all_player_stats.res"
-	var all_player_stats = load(path) as AllPlayerStats
-	var player_stats = PlayerStats.new()
-	player_stats.quiz_title = QuizData.quiz_title
-	player_stats.score = score
-	player_stats.dbp = defeat_boss_point
-	all_player_stats.all_stats.append(player_stats)
+func check_multiple_choice_answer(ans:int):
+	if current_quiz_index < total_questions:
+		var quiz = quiz_items[current_quiz_index]
+		if ans == quiz.correct_option:
+			score += 1
+			deal_boss_damage()
+			show_player_mssg("CORRECT")
+		else:
+			deal_player_damage()
+			show_player_mssg("WRONG")
+	current_quiz_index += 1
 	
-	ResourceSaver.save(all_player_stats, path)
-
-func save_data_globals():
-	QuizData.total_questions = total_questions
-	QuizData.score = score
-	QuizData.defeat_boss_point = defeat_boss_point
-
-
+	
 func _on_option_a_pressed() -> void:
-	if current < total_questions:
-		check_multiple_choice_answer(1)
-		current += 1
-		save_data_globals()
-		display_question()
+	check_multiple_choice_answer(1)
+	run_quiz()
 
 
 func _on_option_b_pressed() -> void:
-	if current < total_questions:
-		check_multiple_choice_answer(2)
-		current += 1
-		save_data_globals()
-		display_question()
+	check_multiple_choice_answer(2)
+	run_quiz()
 
 
 func _on_option_c_pressed() -> void:
-	if current < total_questions:
-		check_multiple_choice_answer(3)
-		current += 1
-		save_data_globals()
-		display_question()
+	check_multiple_choice_answer(3)
+	run_quiz()
 
 
 func _on_option_d_pressed() -> void:
-	if current < total_questions:
-		check_multiple_choice_answer(4)
-		current += 1
-		save_data_globals()
-		display_question()
+	check_multiple_choice_answer(4)
+	run_quiz()
 
 
 func _on_identification_answer_line_edit_text_submitted(new_text: String) -> void:
-	if current < total_questions:
-		check_identification_answer(new_text)
-		current += 1
-		save_data_globals()
-		display_question()
-		%IdentificationAnswerLineEdit.clear()
+	check_identification_answer(new_text.strip_edges())
+	run_quiz()
+	%IdentificationAnswerLineEdit.clear()

@@ -45,31 +45,36 @@ offset_bottom = 60.75
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="QuestionText" type="RichTextLabel" parent="VBoxContainer" unique_id=255930120]
+[node name="QuestionText" type="Label" parent="VBoxContainer" unique_id=1607877222]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/default_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/normal_font_size = 28
-theme_override_font_sizes/bold_font_size = 30
-theme_override_font_sizes/bold_italics_font_size = 28
-theme_override_font_sizes/italics_font_size = 28
-theme_override_font_sizes/mono_font_size = 28
-bbcode_enabled = true
 text = "Nothing here yet..."
-fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsText" type="RichTextLabel" parent="VBoxContainer" unique_id=1226421785]
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=689113648]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="OptionsTextBox" type="VBoxContainer" parent="VBoxContainer" unique_id=742567798]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/bold_font_size = 20
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-bbcode_enabled = true
-fit_content = true
+
+[node name="OptionsText1" type="Label" parent="VBoxContainer/OptionsTextBox" unique_id=476651139]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OptionsText2" type="Label" parent="VBoxContainer/OptionsTextBox" unique_id=1961335140]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OptionsText3" type="Label" parent="VBoxContainer/OptionsTextBox" unique_id=1899418779]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OptionsText4" type="Label" parent="VBoxContainer/OptionsTextBox" unique_id=34937381]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="IdentificationAnswerBox" type="VBoxContainer" parent="VBoxContainer" unique_id=2045479396]
 unique_name_in_owner = true
@@ -85,13 +90,14 @@ text = "Answers are case insensitive"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/font_size = 18
 placeholder_text = "Answer here..."
 clear_button_enabled = true
 
 [node name="MultipleChoiceOptionsBox" type="GridContainer" parent="VBoxContainer" unique_id=929824962]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/h_separation = 30
+theme_override_constants/v_separation = 10
 columns = 2
 
 [node name="OptionA" type="Button" parent="VBoxContainer/MultipleChoiceOptionsBox" unique_id=367391072]
@@ -134,6 +140,12 @@ unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
 
+[node name="PlayerMssg" type="Label" parent="MarginContainer2/PlayerLifeBox" unique_id=1919162362]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+horizontal_alignment = 1
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=987594246]
 layout_mode = 1
 anchors_preset = 1
@@ -156,9 +168,6 @@ text = "Boss"
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
-
-[node name="QuizDialog" type="AcceptDialog" parent="." unique_id=282486625]
-unique_name_in_owner = true
 
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=1709772609]
 layout_mode = 1
@@ -185,12 +194,6 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 text = "Time: 0"
-horizontal_alignment = 1
-
-[node name="DefeatBossPoint" type="Label" parent="MarginContainer3/VBoxContainer" unique_id=163063171]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Defeat Boss Point: 0"
 horizontal_alignment = 1
 
 [node name="QuizTimer" type="Timer" parent="." unique_id=1013348502]

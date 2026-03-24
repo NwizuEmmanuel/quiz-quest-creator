@@ -1,15 +1,21 @@
 extends Node
 
+var question_count = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	list_questions()
 	%QuizTitleLabel.text = QuizData.quiz_title
+
+func _process(_delta: float) -> void:
+	%QuestionCountLabel.text = "Question count: %d" % [question_count]
 
 func list_questions():
 	var file = load(QuizData.quiz_path) as Questions
 	%QuizEditorItemList.clear()
 	for i in file.questions:
 		%QuizEditorItemList.add_item(i.text)
+	question_count = file.questions.size()
 
 func show_alert_dialog(title:String, dialog_text: String):
 	%QuizEditorAlertDialog.title = title
