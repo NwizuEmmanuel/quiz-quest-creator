@@ -69,7 +69,7 @@ func _on_play_button_pressed() -> void:
 		QuizData.quiz_path = %QuizItemList.get_item_metadata(index)
 		
 		var player_stats = load("user://data/player_stats.res") as PlayerStats
-		DirAccess.dir_exists_absolute("user://data/")
+		DirAccess.make_dir_recursive_absolute("user://data/")
 		if player_stats == null:
 			player_stats = PlayerStats.new()
 			ResourceSaver.save(player_stats, "user://data/player_stats.res")

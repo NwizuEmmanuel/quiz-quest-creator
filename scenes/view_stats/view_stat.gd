@@ -56,6 +56,8 @@ func display_file_data(path: String):
 		# Build the BBCode display
 		var bbcode = "[b]Quiz Info:[/b] %s\n" % data.quiz_title
 		bbcode += "-------------------\n"
+		bbcode += "Player Name: %s\n" % data.username
+		bbcode += "Quiz Title: %s\n" % data.quiz_title
 		bbcode += "Score: [color=yellow]%d[/color]\n" % data.score
 		
 		if data.defeated_boss:

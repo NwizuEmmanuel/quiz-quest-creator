@@ -7,7 +7,7 @@ extends Node
 @onready var richtext_label: RichTextLabel = %RichTextLabel	
 
 # The base directory your tree will display
-var root_path: String = "res://game_data/"
+var root_path: String = "user://all_players_stats/"
 
 ## Step 1: Open the dialog when the "New Folder" button is pressed
 func _on_create_folder_button_pressed():
@@ -47,6 +47,7 @@ func _on_new_folder_dialog_confirmed():
 		print("Error creating folder: ", err)
 
 func _ready():
+	DirAccess.make_dir_recursive_absolute(root_path)
 	# Configure Tree
 	tree.hide_root = false
 	refresh_tree()
@@ -196,6 +197,7 @@ func display_resource_content(path: String):
 		var bbcode = "[b]Quiz Info:[/b] %s\n" % data.quiz_title
 		bbcode += "-------------------\n"
 		bbcode += "Player Name: %s\n" % data.username
+		bbcode += "Quiz Title: %s\n" % data.quiz_title
 		bbcode += "Score: [color=yellow]%d[/color]\n" % data.score
 		
 		if data.defeated_boss:
@@ -205,4 +207,4 @@ func display_resource_content(path: String):
 			
 		richtext_label.text = bbcode
 	else:
-		richtext_label.text = "Error: File is not a valid GameData resource."
+		richtext_label.text = "Error: File is not a valid File resource."

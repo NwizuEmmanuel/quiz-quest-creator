@@ -35,8 +35,8 @@ func save_data():
 	QuizData.defeated_boss = defeated_boss
 	DirAccess.make_dir_recursive_absolute("user://quiz_results")
 	var quiz_title = QuizData.quiz_title
-	var player_stats = PlayerStats.new()
-	var filename = quiz_title+"_"+player_stats.username
+	var player_stats = load("user://data/player_stats.res")
+	var filename = player_stats.username
 	player_stats.score = score
 	player_stats.defeated_boss = defeated_boss
 	player_stats.quiz_title = quiz_title
