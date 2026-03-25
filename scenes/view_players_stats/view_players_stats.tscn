@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://t2snd0iuhk86"]
 
+[ext_resource type="Script" uid="uid://m4olibl036ly" path="res://scenes/view_players_stats/view_players_stats.gd" id="1_wydv1"]
+
 [node name="ViewPlayersStats" type="Control" unique_id=955381926]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wydv1")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=835793404]
 layout_mode = 1
@@ -20,9 +23,45 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1005739114]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1077103563]
 layout_mode = 2
 
-[node name="Tree" type="Tree" parent="MarginContainer/HBoxContainer" unique_id=1174553788]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1757387244]
+layout_mode = 2
+
+[node name="CreateNewFolderButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1404377462]
+layout_mode = 2
+text = "Create New Folder"
+
+[node name="ImportFileButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=595149900]
+layout_mode = 2
+text = "Import File"
+
+[node name="DeleteFolderButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=226375393]
+layout_mode = 2
+text = "Delete Folder"
+
+[node name="DeleteFileButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=872994888]
+layout_mode = 2
+text = "Delete File"
+
+[node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=991246829]
+layout_mode = 2
+text = "Delete"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1005739114]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1174553788]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="FileDialog" type="FileDialog" parent="." unique_id=156814921]
+filters = PackedStringArray("*.res")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CreateNewFolderButton" to="." method="_on_create_folder_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ImportFileButton" to="." method="_on_import_file_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_delete_directory_recursive"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
