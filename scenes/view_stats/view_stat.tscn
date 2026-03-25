@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://bx3j7tuaj5jyb"]
+
+[ext_resource type="Texture2D" uid="uid://c3gnctu2ea20i" path="res://assets/images/chenspec-art-7018244.jpg" id="1_hu5ae"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_77s2t"]
+texture = ExtResource("1_hu5ae")
+
+[node name="ViewStat" type="Control" unique_id=1879957109]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1790694372]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_77s2t")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1433985509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1775241316]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/HBoxContainer" unique_id=1695548284]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer" unique_id=63996231]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScrollContainer" unique_id=107111268]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/HBoxContainer/ScrollContainer/MarginContainer" unique_id=1063447572]
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true

@@ -3,6 +3,7 @@ var all_player_stats = load("user://data/all_player_stats.res") as AllPlayerStat
 
 
 func _on_save_button_pressed() -> void:
+	all_player_stats = AllPlayerStats.new()
 	if %FullnameLineEdit.text != "":
 		all_player_stats.user_fullname = %FullnameLineEdit.text.strip_edges()
 		ResourceSaver.save(all_player_stats, "user://data/all_player_stats.res")

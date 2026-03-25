@@ -68,7 +68,11 @@ func _on_play_button_pressed() -> void:
 		QuizData.quiz_title = %QuizItemList.get_item_text(index)
 		QuizData.quiz_path = %QuizItemList.get_item_metadata(index)
 		
-		var all_player_stats = load("user://data/all_player_stats.res") as AllPlayerStats 
+		var all_player_stats = load("user://data/all_player_stats.res") as AllPlayerStats
+		DirAccess.dir_exists_absolute("user://data/")
+		if all_player_stats == null:
+			all_player_stats = AllPlayerStats.new()
+			ResourceSaver.save(all_player_stats, "user://data/all_player_stats.res")
 		if all_player_stats.user_fullname == "":
 			get_tree().change_scene_to_file("res://scenes/create_username/create_username.tscn")
 		else:
