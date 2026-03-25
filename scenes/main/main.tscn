@@ -48,10 +48,10 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "CREATE QUIZ"
 
-[node name="ExitGameButton2" type="Button" parent="VBoxContainer" unique_id=1078040820]
+[node name="ViewPlayersStatsButton" type="Button" parent="VBoxContainer" unique_id=1078040820]
 layout_mode = 2
 size_flags_vertical = 3
-text = "EXIT GAME"
+text = "VIEW PLAYERS STATS"
 
 [node name="ExitGameButton" type="Button" parent="VBoxContainer" unique_id=1382486239]
 layout_mode = 2
@@ -60,5 +60,5 @@ text = "EXIT GAME"
 
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreateQuizButton" to="." method="_on_create_quiz_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitGameButton2" to="." method="_on_exit_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ViewPlayersStatsButton" to="." method="_on_view_players_stats_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]
