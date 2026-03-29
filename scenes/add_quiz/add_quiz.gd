@@ -1,5 +1,8 @@
 extends Node
 
+@onready var file_dialog = $FileDialog
+const IMPORT_DIR = "user://quizzes/" # Your target folder
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	list_quiz_files()
@@ -117,3 +120,28 @@ func _on_play_button_pressed() -> void:
 	QuizData.quiz_title = %QuizTitleItemList.get_item_text(index)
 	QuizData.quiz_path = %QuizTitleItemList.get_item_metadata(index)
 	get_tree().change_scene_to_file("res://scenes/play_quiz/play_quiz.tscn")
+
+
+func _on_import_button_pressed() -> void:
+	file_dialog.popup_centered()
+
+
+func _on_file_dialog_file_selected(path: String) -> void:
+	# 'path' is the full path of the file the user picked
+	var file_name = path.get_file() 
+	var destination = IMPORT_DIR + file_name
+	
+	var dir = DirAccess.open("user://")
+	
+	if dir.file_exists(destination):
+		print("File already exists! Overwriting...")
+	
+	# Use copy_absolute for files coming from outside the project
+	var error = DirAccess.copy_absolute(path, destination)
+	
+	if error == OK:
+		print("Import Successful: ", destination)
+		# Optional: Refresh your UI list here
+	else:
+		print("Error importing file. Code: ", error)
+	list_quiz_files()

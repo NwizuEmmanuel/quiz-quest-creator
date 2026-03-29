@@ -12,6 +12,7 @@ func generate_unique_id()->String:
 
 @export var id: String
 @export var score: int = 0
-@export var defeated_boss: bool = false
 @export var quiz_title: String = ""
 @export var username: String = ""
+@export var quiz_frequency: int = 0
+@export var defeated_boss_count: int = 0

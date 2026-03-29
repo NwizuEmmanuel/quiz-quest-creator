@@ -46,67 +46,39 @@ text = "Go Back"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1757387244]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="CreateNewFolderButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1404377462]
+[node name="GetResultButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=595149900]
 layout_mode = 2
-text = "Create New Folder"
+text = "Get Student Result"
 
-[node name="ImportFileButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=595149900]
+[node name="ExportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1157104380]
 layout_mode = 2
-text = "Import File"
+text = "Export Quiz"
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=991246829]
 layout_mode = 2
 text = "Delete"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1005739114]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1174553788]
+[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer" unique_id=203789441]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=354245902]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer" unique_id=1771690977]
-layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/MarginContainer" unique_id=1461682334]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-bbcode_enabled = true
-text = "Nothing Yet..."
-fit_content = true
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=156814921]
-title = "Open a File"
-file_mode = 0
+title = "Open File(s)"
+file_mode = 1
 display_mode = 1
 access = 2
 filters = PackedStringArray("*.res")
 
-[node name="NewFolderDialog" type="ConfirmationDialog" parent="." unique_id=65170641]
-
-[node name="FolderNameInput" type="LineEdit" parent="NewFolderDialog" unique_id=737425121]
-offset_right = 108.0
-offset_bottom = 41.0
+[node name="ExportDialog" type="FileDialog" parent="." unique_id=330372089]
+display_mode = 1
+access = 2
+filters = PackedStringArray("*csv ; CSV Spreadsheet")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/CreateNewFolderButton" to="." method="_on_create_folder_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ImportFileButton" to="." method="_on_import_file_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ExportButton" to="." method="_on_export_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
-[connection signal="item_selected" from="MarginContainer/VBoxContainer/HBoxContainer/Tree" to="." method="_on_tree_item_selected"]
-[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
-[connection signal="confirmed" from="NewFolderDialog" to="." method="_on_new_folder_dialog_confirmed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_files_selected"]
+[connection signal="file_selected" from="ExportDialog" to="." method="_on_export_dialog_file_selected"]

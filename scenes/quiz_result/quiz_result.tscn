@@ -5,6 +5,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5v2o4"]
 texture = ExtResource("2_sb3je")
+modulate_color = Color(0.37716255, 0.37716258, 0.37716255, 1)
 
 [node name="QuizResult" type="Control" unique_id=323358654]
 layout_mode = 3

@@ -6,6 +6,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w6xti"]
 texture = ExtResource("2_iuonh")
+modulate_color = Color(0.36810192, 0.36810198, 0.36810192, 1)
 
 [node name="Main" type="Control" unique_id=1484905596]
 layout_mode = 3
@@ -39,11 +40,6 @@ offset_bottom = 123.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer" unique_id=1420269669]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Start Game"
-
 [node name="CreateQuizButton" type="Button" parent="VBoxContainer" unique_id=1263405761]
 layout_mode = 2
 size_flags_vertical = 3
@@ -73,7 +69,6 @@ theme_override_fonts/font = ExtResource("3_k2fmo")
 theme_override_font_sizes/font_size = 82
 text = "QUIZQUEST"
 
-[connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreateQuizButton" to="." method="_on_create_quiz_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ViewPlayersStatsButton" to="." method="_on_view_players_stats_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitGameButton" to="." method="_on_exit_game_button_pressed"]

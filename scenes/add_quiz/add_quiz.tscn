@@ -5,6 +5,7 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pui21"]
 texture = ExtResource("2_by6js")
+modulate_color = Color(0.5069202, 0.5069202, 0.5069202, 1)
 
 [node name="AddQuiz" type="Control" unique_id=157266126]
 layout_mode = 3
@@ -45,9 +46,17 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1155391665]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=630346968]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=158566350]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=630346968]
 layout_mode = 2
 text = "QUIZ TITLE"
+
+[node name="ImportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1541185702]
+layout_mode = 2
+text = "IMPORT QUIZ"
 
 [node name="QuizTitleLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=306520409]
 unique_name_in_owner = true
@@ -119,6 +128,16 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 text = "Return"
 
+[node name="FileDialog" type="FileDialog" parent="." unique_id=942072444]
+oversampling_override = 1.0
+title = "Open a File"
+size = Vector2i(700, 600)
+file_mode = 0
+display_mode = 1
+access = 2
+filters = PackedStringArray("*res; Godot Resources")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ImportButton" to="." method="_on_import_button_pressed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/QuizTitleLineEdit" to="MarginContainer/VBoxContainer/QuizTitleLineEdit" method="_on_text_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/EditButton" to="." method="_on_edit_button_pressed"]
@@ -128,3 +147,4 @@ text = "Return"
 [connection signal="confirmed" from="DeleteQuizConfirmationDialog" to="." method="_on_delete_quiz_confirmation_dialog_confirmed"]
 [connection signal="dir_selected" from="AddQuizFileDialog" to="." method="_on_add_quiz_file_dialog_dir_selected"]
 [connection signal="pressed" from="MarginContainer2/GoToHubButton" to="." method="_on_go_to_hub_button_pressed"]
+[connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_file_selected"]
