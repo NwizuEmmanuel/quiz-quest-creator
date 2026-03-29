@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="quiz-combat"
+config/name="quiz-quest-creator"
 run/main_scene="uid://5lnq1moklflw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/image="uid://bud0db804qtga"
