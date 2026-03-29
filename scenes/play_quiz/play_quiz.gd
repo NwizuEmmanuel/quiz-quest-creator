@@ -33,18 +33,6 @@ func save_data():
 	QuizData.score = score
 	QuizData.total_questions = total_questions
 	QuizData.defeated_boss = defeated_boss
-	DirAccess.make_dir_recursive_absolute("user://quiz_results")
-	DirAccess.make_dir_recursive_absolute("user://data")
-	var quiz_title = QuizData.quiz_title
-	var player_stats = load("user://data/player_stats.res") as PlayerStats
-	if player_stats != null:
-		var filename = player_stats.username
-		player_stats.score = score
-		player_stats.quiz_title = quiz_title
-		player_stats.quiz_frequency += 1
-		if defeated_boss:
-			player_stats.defeated_boss_count += 1
-		ResourceSaver.save(player_stats, "user://quiz_results/"+filename+".res")
 
 func deal_damage() -> float:
 	if total_questions <= 0:

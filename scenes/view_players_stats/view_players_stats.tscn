@@ -78,6 +78,7 @@ access = 2
 filters = PackedStringArray("*csv ; CSV Spreadsheet")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/GoBackButton" to="." method="_on_go_back_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/GetResultButton" to="." method="_on_get_result_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ExportButton" to="." method="_on_export_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/DeleteButton" to="." method="_on_delete_button_pressed"]
 [connection signal="file_selected" from="FileDialog" to="." method="_on_file_dialog_files_selected"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q75hwu3ktc04"
-path="res://.godot/imported/stonebutton.png-00d244ba8abecf223d796a3c070733c2.ctex"
+uid="uid://cs7axhf1umb8d"
+path="res://.godot/imported/scroll.png-ffac8df0fa02fc47aacf170cbbcbec17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/stonebutton.png"
-dest_files=["res://.godot/imported/stonebutton.png-00d244ba8abecf223d796a3c070733c2.ctex"]
+source_file="res://assets/images/scroll.png"
+dest_files=["res://.godot/imported/scroll.png-ffac8df0fa02fc47aacf170cbbcbec17.ctex"]
 
 [params]
 

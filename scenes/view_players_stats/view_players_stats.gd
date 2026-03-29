@@ -105,3 +105,7 @@ func _on_export_dialog_file_selected(path: String):
 
 func _on_go_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+
+
+func _on_get_result_button_pressed() -> void:
+	file_dialog.popup_centered()
