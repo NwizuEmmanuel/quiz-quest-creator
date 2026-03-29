@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cglwvottsahnl"]
 
 [ext_resource type="Script" uid="uid://dn3snt663n6x4" path="res://scenes/add_quiz/add_quiz.gd" id="1_by6js"]
-[ext_resource type="Texture2D" uid="uid://c3gnctu2ea20i" path="res://assets/images/chenspec-art-7018244.jpg" id="2_qnnl5"]
+[ext_resource type="Texture2D" uid="uid://d0qni50d7l8b2" path="res://assets/backgrounds/library.png" id="2_by6js"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pui21"]
-texture = ExtResource("2_qnnl5")
+texture = ExtResource("2_by6js")
 
 [node name="AddQuiz" type="Control" unique_id=157266126]
 layout_mode = 3
@@ -117,7 +117,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="GoToHubButton" type="Button" parent="MarginContainer2" unique_id=1244403241]
 layout_mode = 2
-text = "GO TO HUB"
+text = "Return"
 
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/QuizTitleLineEdit" to="MarginContainer/VBoxContainer/QuizTitleLineEdit" method="_on_text_changed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]

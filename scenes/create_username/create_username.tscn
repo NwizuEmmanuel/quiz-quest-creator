@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://8vwrvemu4i3d"]
 
 [ext_resource type="Script" uid="uid://bymycl7rsn14c" path="res://scenes/create_username/create_username.gd" id="1_c0e60"]
-[ext_resource type="Texture2D" uid="uid://c3gnctu2ea20i" path="res://assets/images/chenspec-art-7018244.jpg" id="2_k5scn"]
+[ext_resource type="Texture2D" uid="uid://7fokg62drnrk" path="res://assets/backgrounds/name bg.png" id="2_fch76"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nntp0"]
-texture = ExtResource("2_k5scn")
+texture = ExtResource("2_fch76")
 
 [node name="CreateUserName" type="Control" unique_id=1402682287]
 layout_mode = 3
@@ -40,7 +40,7 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=2063461254]
 layout_mode = 2
-text = "FULL NAME"
+text = "Full Name"
 
 [node name="FullnameLineEdit" type="LineEdit" parent="VBoxContainer" unique_id=68807234]
 unique_name_in_owner = true
@@ -49,7 +49,7 @@ placeholder_text = "Enter your full name"
 
 [node name="SaveButton" type="Button" parent="VBoxContainer" unique_id=961521201]
 layout_mode = 2
-text = "SAVE"
+text = "Save"
 
 [node name="AcceptDialog" type="AcceptDialog" parent="." unique_id=115171626]
 unique_name_in_owner = true

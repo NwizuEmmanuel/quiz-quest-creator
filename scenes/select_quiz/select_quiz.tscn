@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://by4pofomoswoy"]
 
 [ext_resource type="Script" uid="uid://bxbw0kdcc4o5q" path="res://scenes/select_quiz/select_quiz.gd" id="1_7ak03"]
-[ext_resource type="Texture2D" uid="uid://c3gnctu2ea20i" path="res://assets/images/chenspec-art-7018244.jpg" id="2_obeme"]
+[ext_resource type="Texture2D" uid="uid://d0qni50d7l8b2" path="res://assets/backgrounds/library.png" id="2_7ak03"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45nl3"]
-texture = ExtResource("2_obeme")
+texture = ExtResource("2_7ak03")
 
 [node name="SelectQuiz" type="Control" unique_id=95589843]
 layout_mode = 3
@@ -50,7 +50,7 @@ layout_mode = 2
 
 [node name="AddQuizButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1063747878]
 layout_mode = 2
-text = "ADD QUIZ"
+text = "Add Quiz"
 
 [node name="ViewResultsButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=442981702]
 layout_mode = 2
@@ -67,12 +67,12 @@ layout_mode = 2
 [node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2028200603]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "PLAY"
+text = "Play"
 
 [node name="DeleteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=381514101]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "DELETE"
+text = "Delete"
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1356204055]
 layout_mode = 1
@@ -91,7 +91,7 @@ theme_override_constants/margin_bottom = 8
 [node name="Label" type="Label" parent="MarginContainer2" unique_id=130411423]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "SELECT QUIZ TO PLAY"
+text = "Select Quiz To Play"
 horizontal_alignment = 1
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=1252516429]
@@ -116,7 +116,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="GoToHubButton" type="Button" parent="MarginContainer3" unique_id=485011215]
 layout_mode = 2
-text = "GO TO HUB"
+text = "Return"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/AddQuizButton" to="." method="_on_add_quiz_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ViewResultsButton" to="." method="_on_view_results_button_pressed"]
