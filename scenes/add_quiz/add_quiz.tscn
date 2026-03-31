@@ -114,6 +114,7 @@ title = "Open a Directory"
 file_mode = 2
 display_mode = 1
 access = 2
+use_native_dialog = true
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1342310803]
 layout_mode = 1
@@ -136,6 +137,7 @@ file_mode = 0
 display_mode = 1
 access = 2
 filters = PackedStringArray("*res; Godot Resources")
+use_native_dialog = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/ImportButton" to="." method="_on_import_button_pressed"]
 [connection signal="text_changed" from="MarginContainer/VBoxContainer/QuizTitleLineEdit" to="MarginContainer/VBoxContainer/QuizTitleLineEdit" method="_on_text_changed"]
