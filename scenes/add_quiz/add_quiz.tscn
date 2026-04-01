@@ -2,10 +2,16 @@
 
 [ext_resource type="Script" uid="uid://dn3snt663n6x4" path="res://scenes/add_quiz/add_quiz.gd" id="1_by6js"]
 [ext_resource type="Texture2D" uid="uid://d0qni50d7l8b2" path="res://assets/backgrounds/library.png" id="2_by6js"]
+[ext_resource type="Texture2D" uid="uid://bdey4rnrq54rx" path="res://assets/images/edited scroll.png" id="3_qnnl5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pui21"]
 texture = ExtResource("2_by6js")
 modulate_color = Color(0.5069202, 0.5069202, 0.5069202, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwflj"]
+texture = ExtResource("3_qnnl5")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qnnl5"]
 
 [node name="AddQuiz" type="Control" unique_id=157266126]
 layout_mode = 3
@@ -24,6 +30,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_pui21")
+
+[node name="Panel2" type="Panel" parent="." unique_id=299350990]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -636.84375
+offset_top = -157.0
+offset_right = 636.84375
+offset_bottom = 319.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_cwflj")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1401635044]
 layout_mode = 1
@@ -48,15 +69,17 @@ layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=158566350]
 layout_mode = 2
+size_flags_horizontal = 0
 theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=630346968]
-layout_mode = 2
-text = "QUIZ TITLE"
 
 [node name="ImportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1541185702]
 layout_mode = 2
 text = "IMPORT QUIZ"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=630346968]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "QUIZ TITLE"
 
 [node name="QuizTitleLineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=306520409]
 unique_name_in_owner = true
@@ -76,6 +99,11 @@ text = "QUIZZES"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_colors/font_hovered_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_colors/font_hovered_selected_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_colors/font_selected_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qnnl5")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1320836639]
 layout_mode = 2

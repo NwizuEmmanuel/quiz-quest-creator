@@ -2,11 +2,25 @@
 
 [ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://commons/ui_theme.theme" id="1_s2q6h"]
 [ext_resource type="Script" uid="uid://m4olibl036ly" path="res://scenes/view_players_stats/view_players_stats.gd" id="1_wydv1"]
-[ext_resource type="Texture2D" uid="uid://c3gnctu2ea20i" path="res://assets/images/chenspec-art-7018244.jpg" id="2_mar02"]
+[ext_resource type="Texture2D" uid="uid://pna52e6yhada" path="res://assets/backgrounds/alchemy room.png" id="3_s2q6h"]
+[ext_resource type="Texture2D" uid="uid://bdey4rnrq54rx" path="res://assets/images/edited scroll.png" id="4_n122v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2q6h"]
-texture = ExtResource("2_mar02")
+texture = ExtResource("3_s2q6h")
 modulate_color = Color(0.7514611, 0.7514611, 0.75146097, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n122v"]
+texture = ExtResource("4_n122v")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n122v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b77d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ih4qr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4mwe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfhhg"]
 
 [node name="ViewPlayersStats" type="Control" unique_id=955381926]
 layout_mode = 3
@@ -26,6 +40,48 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_s2q6h")
+
+[node name="Panel2" type="Panel" parent="." unique_id=587522183]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -646.875
+offset_top = -282.1875
+offset_right = 646.875
+offset_bottom = 396.1875
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_n122v")
+
+[node name="Tree" type="Tree" parent="." unique_id=203789441]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -418.0
+offset_top = -107.5
+offset_right = 422.0
+offset_bottom = 227.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_colors/font_hovered_dimmed_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_colors/title_button_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
+theme_override_styles/panel = SubResource("StyleBoxEmpty_n122v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7b77d")
+theme_override_styles/title_button_normal = SubResource("StyleBoxEmpty_ih4qr")
+theme_override_styles/title_button_pressed = SubResource("StyleBoxEmpty_e4mwe")
+theme_override_styles/title_button_hover = SubResource("StyleBoxEmpty_lfhhg")
+column_titles_visible = true
+hide_folding = true
+hide_root = true
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=835793404]
 layout_mode = 1
@@ -58,14 +114,6 @@ text = "Get Student Result"
 [node name="ExportButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1157104380]
 layout_mode = 2
 text = "Export Quiz"
-
-[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer" unique_id=203789441]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-column_titles_visible = true
-hide_folding = true
-hide_root = true
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=156814921]
 title = "Open File(s)"
