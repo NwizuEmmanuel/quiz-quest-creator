@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bayl5swv4jvty"]
 
-[ext_resource type="Script" uid="uid://d1suklpkgoesf" path="res://scenes/quiz_editor/quiz_editor.gd" id="1_3wao0"]
+[ext_resource type="Script" uid="uid://d1suklpkgoesf" path="res://scenes/quiz_editor.gd" id="1_3wao0"]
 [ext_resource type="Texture2D" uid="uid://baevvt56b0o46" path="res://assets/backgrounds/classroom.png" id="2_3wao0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1ymo6"]

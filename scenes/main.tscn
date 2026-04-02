@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5lnq1moklflw"]
 
-[ext_resource type="Script" uid="uid://b46oj7owjjnx" path="res://scenes/main/main.gd" id="1_iuonh"]
-[ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://commons/ui_theme.theme" id="1_k2fmo"]
+[ext_resource type="Script" uid="uid://b46oj7owjjnx" path="res://scenes/main.gd" id="1_iuonh"]
+[ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://themes/ui_theme.theme" id="1_k2fmo"]
 [ext_resource type="Texture2D" uid="uid://baevvt56b0o46" path="res://assets/backgrounds/classroom.png" id="2_iuonh"]
 [ext_resource type="FontFile" uid="uid://bmlvjinku6rxn" path="res://assets/fonts/Kultum Ramadhan.otf" id="3_k2fmo"]
 

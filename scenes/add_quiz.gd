@@ -69,10 +69,10 @@ func _on_edit_button_pressed() -> void:
 	if %QuizTitleItemList.is_anything_selected():
 		var index = %QuizTitleItemList.get_selected_items()[0]
 		var selected_quiz = %QuizTitleItemList.get_item_metadata(index)
-		QuizData.quiz_path = selected_quiz
+		Global.quiz_path = selected_quiz
 		var selected_index = %QuizTitleItemList.get_selected_items()[0]
-		QuizData.quiz_title = %QuizTitleItemList.get_item_text(selected_index)
-		get_tree().change_scene_to_file("res://scenes/quiz_editor/quiz_editor.tscn")
+		Global.quiz_title = %QuizTitleItemList.get_item_text(selected_index)
+		get_tree().change_scene_to_file("res://scenes/quiz_editor.tscn")
 	else:
 		show_alert_dialog("WARNING", "SELECT A QUIZ")
 
@@ -108,15 +108,15 @@ func _on_add_quiz_file_dialog_dir_selected(dir: String) -> void:
 
 
 func _on_go_to_hub_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _on_play_button_pressed() -> void:
 	var selected_items = %QuizTitleItemList.get_selected_items()
 	var index = selected_items[0]
-	QuizData.quiz_title = %QuizTitleItemList.get_item_text(index)
-	QuizData.quiz_path = %QuizTitleItemList.get_item_metadata(index)
-	get_tree().change_scene_to_file("res://scenes/play_quiz/play_quiz.tscn")
+	Global.quiz_title = %QuizTitleItemList.get_item_text(index)
+	Global.quiz_path = %QuizTitleItemList.get_item_metadata(index)
+	get_tree().change_scene_to_file("res://scenes/play_quiz.tscn")
 
 
 func _on_import_button_pressed() -> void:

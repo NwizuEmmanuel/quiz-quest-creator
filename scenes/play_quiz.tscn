@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlvqvhbykcels"]
 
-[ext_resource type="Script" uid="uid://cuvsy0wk7aqtv" path="res://scenes/play_quiz/play_quiz.gd" id="1_yubl4"]
+[ext_resource type="Script" uid="uid://cuvsy0wk7aqtv" path="res://scenes/play_quiz.gd" id="1_yubl4"]
 [ext_resource type="Texture2D" uid="uid://djoh0csjxhwu3" path="res://assets/images/jlwd_2ucy_201006.jpg" id="2_y360a"]
 
 [node name="PlayQuiz" type="Control" unique_id=1457344942]

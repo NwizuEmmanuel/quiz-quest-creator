@@ -5,13 +5,13 @@ var question_count = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	list_questions()
-	%QuizTitleLabel.text = QuizData.quiz_title
+	%QuizTitleLabel.text = Global.quiz_title
 
 func _process(_delta: float) -> void:
 	%QuestionCountLabel.text = "Question count: %d" % [question_count]
 
 func list_questions():
-	var file = load(QuizData.quiz_path) as Questions
+	var file = load(Global.quiz_path) as Questions
 	%QuizEditorItemList.clear()
 	var index = 1
 	for i in file.questions:
@@ -55,11 +55,11 @@ func add_multiple_choice():
 	question_item.time_limit = %TimeLimitSpinBox.value
 	question_item.correct_option = %MultipleChoiceAnswerSpinBox.value
 	
-	var q = load(QuizData.quiz_path)
-	q.title = QuizData.quiz_title
+	var q = load(Global.quiz_path)
+	q.title = Global.quiz_title
 	q.questions.append(question_item)
 	
-	ResourceSaver.save(q, QuizData.quiz_path)
+	ResourceSaver.save(q, Global.quiz_path)
 	list_questions()
 
 func add_identification():
@@ -76,10 +76,10 @@ func add_identification():
 	item.correct_answer = %IdentificationAnswerLineEdit.text.to_upper().strip_edges()
 	item.time_limit = %TimeLimitSpinBox.value
 	
-	var q = load(QuizData.quiz_path) as Questions
-	q.title = QuizData.quiz_title
+	var q = load(Global.quiz_path) as Questions
+	q.title = Global.quiz_title
 	q.questions.append(item)
-	ResourceSaver.save(q, QuizData.quiz_path)
+	ResourceSaver.save(q, Global.quiz_path)
 	list_questions()
 	
 
@@ -138,10 +138,10 @@ func _on_delete_button_pressed() -> void:
 	if %QuizEditorItemList.is_anything_selected():
 		var selected_index = %QuizEditorItemList.get_selected_items()[0]
 
-		var question = load(QuizData.quiz_path) as Questions
+		var question = load(Global.quiz_path) as Questions
 		question.questions.remove_at(selected_index)
 
-		ResourceSaver.save(question, QuizData.quiz_path)
+		ResourceSaver.save(question, Global.quiz_path)
 		list_questions()
 	else:
 		show_alert_dialog("WARNING", "SELECT A QUESTION")
@@ -150,7 +150,7 @@ func _on_delete_button_pressed() -> void:
 func _on_quiz_editor_item_list_item_activated(index: int) -> void:
 	if %QuizEditorItemList.is_anything_selected():
 		clear_inputs()
-		var q = load(QuizData.quiz_path) as Questions
+		var q = load(Global.quiz_path) as Questions
 		var selected_question = q.questions[index]
 		%QuestionTextTextEdit.text = selected_question.text
 		
@@ -173,13 +173,13 @@ func _on_quiz_editor_item_list_item_activated(index: int) -> void:
 
 
 func _on_go_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/add_quiz/add_quiz.tscn")
+	get_tree().change_scene_to_file("res://scenes/add_quiz.tscn")
 
 
 func _on_update_question_confirmation_dialog_confirmed() -> void:
 	var selected_index = %QuizEditorItemList.get_selected_items()[0]
 	var selected_option = %QuestionTypeOptionButton.get_selected_id()
-	var q = load(QuizData.quiz_path) as Questions
+	var q = load(Global.quiz_path) as Questions
 	
 	var item = QuestionItem.new()
 	item.text = %QuestionTextTextEdit.text.strip_edges()
@@ -203,7 +203,7 @@ func _on_update_question_confirmation_dialog_confirmed() -> void:
 	item.time_limit = %TimeLimitSpinBox.value
 	
 	q.questions[selected_index] = item
-	ResourceSaver.save(q, QuizData.quiz_path)
+	ResourceSaver.save(q, Global.quiz_path)
 	%QuizEditorItemList.deselect_all()
 	clear_inputs()
 	list_questions()

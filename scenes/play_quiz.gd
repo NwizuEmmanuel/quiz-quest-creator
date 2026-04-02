@@ -14,8 +14,8 @@ var multiple_choice_answer = 0
 
 
 func _ready() -> void:
-	if load(QuizData.quiz_path) != null:
-		questions = load(QuizData.quiz_path) as Questions
+	if load(Global.quiz_path) != null:
+		questions = load(Global.quiz_path) as Questions
 		quiz_items = questions.questions
 	total_questions = quiz_items.size()
 	run_quiz()
@@ -30,9 +30,9 @@ func _process(_delta: float) -> void:
 
 
 func save_data():
-	QuizData.score = score
-	QuizData.total_questions = total_questions
-	QuizData.defeated_boss = defeated_boss
+	Global.score = score
+	Global.total_questions = total_questions
+	Global.defeated_boss = defeated_boss
 
 func deal_damage() -> float:
 	if total_questions <= 0:
@@ -58,8 +58,8 @@ func run_quiz():
 		if boss_life == 0:
 			defeated_boss = true
 		save_data()
-		print(QuizData.defeated_boss)
-		get_tree().change_scene_to_file("res://scenes/quiz_result/quiz_result.tscn")
+		print(Global.defeated_boss)
+		get_tree().change_scene_to_file("res://scenes/quiz_result.tscn")
 		return
 	
 	var quiz = quiz_items[current_quiz_index]
@@ -139,4 +139,4 @@ func _on_identification_answer_line_edit_text_submitted(new_text: String) -> voi
 
 
 func _on_quit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/add_quiz/add_quiz.tscn")
+	get_tree().change_scene_to_file("res://scenes/add_quiz.tscn")

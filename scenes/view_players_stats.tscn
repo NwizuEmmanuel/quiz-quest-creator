@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://t2snd0iuhk86"]
 
-[ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://commons/ui_theme.theme" id="1_s2q6h"]
-[ext_resource type="Script" uid="uid://m4olibl036ly" path="res://scenes/view_players_stats/view_players_stats.gd" id="1_wydv1"]
+[ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://themes/ui_theme.theme" id="1_s2q6h"]
+[ext_resource type="Script" uid="uid://m4olibl036ly" path="res://scenes/view_players_stats.gd" id="1_wydv1"]
 [ext_resource type="Texture2D" uid="uid://pna52e6yhada" path="res://assets/backgrounds/alchemy room.png" id="3_s2q6h"]
 [ext_resource type="Texture2D" uid="uid://bdey4rnrq54rx" path="res://assets/images/edited scroll.png" id="4_n122v"]
 
