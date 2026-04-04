@@ -1,10 +1,10 @@
 extends Node
 
 @onready var file_dialog = $FileDialog
-const IMPORT_DIR = "user://quizzes/" # Your target folder
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	DirAccess.make_dir_recursive_absolute("user://quizzes/")
 	list_quiz_files()
 
 func show_alert_dialog(title:String,dialog_text:String):
@@ -13,15 +13,13 @@ func show_alert_dialog(title:String,dialog_text:String):
 	%AddQuizAlertDialog.popup_centered()
 
 func add_quiz():
-	var path = "user://quizzes/"
 	if %QuizTitleLineEdit.text == "":
 		show_alert_dialog("WARNING", "TITLE IS REQUIRED")
 	else:
 		if FileAccess.file_exists("user://quizzes/" + %QuizTitleLineEdit.text + ".res"):
 			show_alert_dialog("WARNING", "QUIZ ALREADY EXISTS")
 			return 
-		path += %QuizTitleLineEdit.text + ".res"
-		DirAccess.make_dir_recursive_absolute("user://quizzes")
+		var path = "user://quizzes/" + %QuizTitleLineEdit.text + ".res"
 		var q = Questions.new()
 		q.title = %QuizTitleLineEdit.text
 		ResourceSaver.save(q, path)
@@ -96,6 +94,7 @@ func _on_add_quiz_file_dialog_dir_selected(dir: String) -> void:
 	var file_name = quiz_title + ".res"
 	var full_path = dir.path_join(file_name)
 	
+	schedule_time(selected_item)
 	add_participants(selected_item)
 	# 4. Perform the copy
 	var error = DirAccess.copy_absolute(selected_item, full_path)
@@ -127,9 +126,9 @@ func _on_import_button_pressed() -> void:
 func _on_file_dialog_file_selected(path: String) -> void:
 	# 'path' is the full path of the file the user picked
 	var file_name = path.get_file() 
-	var destination = IMPORT_DIR + file_name
+	var destination = "user://quizzes/" + file_name
 	
-	var dir = DirAccess.open("user://")
+	var dir = DirAccess.open("user://quizzes/")
 	
 	if dir.file_exists(destination):
 		print("File already exists! Overwriting...")
@@ -144,11 +143,21 @@ func _on_file_dialog_file_selected(path: String) -> void:
 		print("Error importing file. Code: ", error)
 	list_quiz_files()
 
+func schedule_time(quiz_path: String):
+	var questions = load(quiz_path) as Questions
+	questions.schedule_time_from = Global.schedule_time_from
+	questions.schedule_time_to = Global.schedule_time_to
+	questions.schedule_date = Global.schedule_date
+	ResourceSaver.save(questions, quiz_path)
 
 func add_participants(quiz_path: String):
-	var path = "user://data/all_students_data.res"
+	var path = "user://all_students_data.res"
 	var questions = load(quiz_path) as Questions
 	var all_students = load(path) as AllStudents
 	var students = all_students.all_students
 	questions.participants = students
 	ResourceSaver.save(questions, quiz_path)
+
+
+func _on_schedule_btn_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/schedule_time.tscn")

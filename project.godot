@@ -23,6 +23,10 @@ buses/default_bus_layout=""
 
 Global="*uid://c3cfiuef2xc2q"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/supabase/plugin.cfg")
+
 [gui]
 
 theme/custom="uid://dc6o4gyd3plt7"

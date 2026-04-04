@@ -1,6 +1,6 @@
 extends Control
 
-const DATA_DIR = "user://all_students"
+const DATA_DIR = "user://"
 const FILE_PATH = DATA_DIR + "all_students_data.res"
 @onready var username_input:LineEdit = %UsernameInput
 @onready var password_input: LineEdit = %PasswordInput

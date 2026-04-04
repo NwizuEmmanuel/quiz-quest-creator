@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ddty3meawal4x"]
+
+[ext_resource type="Script" uid="uid://dw8xo0w221mg" path="res://scenes/schedule_time.gd" id="1_fv3x7"]
+[ext_resource type="Texture2D" uid="uid://baevvt56b0o46" path="res://assets/backgrounds/classroom.png" id="1_hj2sj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fv3x7"]
+texture = ExtResource("1_hj2sj")
+
+[node name="ScheduleTime" type="Control" unique_id=245640799]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fv3x7")
+
+[node name="Panel" type="Panel" parent="." unique_id=598602484]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_fv3x7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=749007314]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -291.5625
+offset_top = -146.0
+offset_right = 291.5625
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1065242313]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer" unique_id=927007663]
+layout_mode = 2
+text = "From(24 hour format, Hr:Min:Sec): "
+
+[node name="FromInput" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=1339783142]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "eg. 09:48:00"
+clear_button_enabled = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1366054920]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=339417365]
+layout_mode = 2
+text = "To(24 hour format, Hr:Min:Sec): "
+
+[node name="ToInput" type="LineEdit" parent="VBoxContainer/HBoxContainer2" unique_id=176439353]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "eg. 10:48:00"
+clear_button_enabled = true
+
+[node name="ScheduleBtn" type="Button" parent="VBoxContainer" unique_id=434058499]
+layout_mode = 2
+text = "Schedule"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="." unique_id=147835671]
+
+[node name="ReturnBtn" type="Button" parent="." unique_id=1921937504]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 64.0
+offset_right = 177.0
+offset_bottom = 121.0
+text = "Reurn"
+
+[connection signal="pressed" from="VBoxContainer/ScheduleBtn" to="." method="_on_schedule_btn_pressed"]
+[connection signal="pressed" from="ReturnBtn" to="." method="_on_return_btn_pressed"]
