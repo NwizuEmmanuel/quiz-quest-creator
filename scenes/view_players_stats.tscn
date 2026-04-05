@@ -3,24 +3,10 @@
 [ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://themes/ui_theme.theme" id="1_s2q6h"]
 [ext_resource type="Script" uid="uid://m4olibl036ly" path="res://scenes/view_players_stats.gd" id="1_wydv1"]
 [ext_resource type="Texture2D" uid="uid://pna52e6yhada" path="res://assets/backgrounds/alchemy room.png" id="3_s2q6h"]
-[ext_resource type="Texture2D" uid="uid://bdey4rnrq54rx" path="res://assets/images/edited scroll.png" id="4_n122v"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2q6h"]
 texture = ExtResource("3_s2q6h")
 modulate_color = Color(0.7514611, 0.7514611, 0.75146097, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n122v"]
-texture = ExtResource("4_n122v")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n122v"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b77d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ih4qr"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e4mwe"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfhhg"]
 
 [node name="ViewPlayersStats" type="Control" unique_id=955381926]
 layout_mode = 3
@@ -73,37 +59,10 @@ text = "Get Student Result"
 layout_mode = 2
 text = "Export Quiz"
 
-[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer" unique_id=587522183]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_n122v")
-
-[node name="Tree" type="Tree" parent="MarginContainer/VBoxContainer/Panel2" unique_id=203789441]
+[node name="StudentCountLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=971177562]
 unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -407.0
-offset_top = -154.0
-offset_right = 409.0
-offset_bottom = 159.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_vertical = 3
-theme_override_colors/font_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
-theme_override_colors/font_hovered_dimmed_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
-theme_override_colors/title_button_color = Color(0.16470589, 0.09411765, 0.0627451, 1)
-theme_override_styles/panel = SubResource("StyleBoxEmpty_n122v")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7b77d")
-theme_override_styles/title_button_normal = SubResource("StyleBoxEmpty_ih4qr")
-theme_override_styles/title_button_pressed = SubResource("StyleBoxEmpty_e4mwe")
-theme_override_styles/title_button_hover = SubResource("StyleBoxEmpty_lfhhg")
-column_titles_visible = true
-hide_folding = true
-hide_root = true
+layout_mode = 2
+text = "0 students"
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=156814921]
 title = "Open File(s)"

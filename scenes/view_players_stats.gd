@@ -2,57 +2,45 @@ extends Node
 
 @onready var file_dialog: FileDialog = $FileDialog
 @onready var export_dialog = $ExportDialog
-@onready var tree = %Tree
 
 
 # The base directory your tree will display
 var save_path = "user://students_results.csv"
 var INTERNAL_CSV = "user://students_results.csv"
 # The headers for your CSV file
-const CSV_HEADER = "ID,Username,Quiz Title,Score,Total Questions,Quiz Frequency,Defeated Bosses,Date\n"
+#---------------------s---------s-----------s------d-----------d------------s-------------s-------------------s--------------s-----------s-
+const CSV_HEADER = "Username,Password,Quiz Title,Score,Total Questions,Defeated Boss,Schedule Date,Schedule Time From,Schedule Time To,Date\n"
 
 func _ready():
-	setup_tree_columns()
-	load_csv_to_table(save_path)
+	show_student_count()
 
-func setup_tree_columns():
-	tree.columns = 8
-	tree.set_column_title(0, "ID")
-	tree.set_column_title(1, "Username")
-	tree.set_column_title(2, "Quiz Title")
-	tree.set_column_title(3, "Score")
-	tree.set_column_title(4, "Total Questions")
-	tree.set_column_title(5, "Freq")
-	tree.set_column_title(6, "Bosses")
-	tree.set_column_title(7, "Date")
+func show_student_count():
+	var total = get_student_count_from_csv(save_path)
+	%StudentCountLabel.text = "Number of students: %d" % total
 
-func load_csv_to_table(path: String):
+
+func get_student_count_from_csv(path: String) -> int:
 	if not FileAccess.file_exists(path):
 		print("No CSV found at: ", path)
-		return
+		return 0
 
-	# Clear existing items
-	tree.clear()
-	var root = tree.create_item()
-	
 	var file = FileAccess.open(path, FileAccess.READ)
+	var student_count = 0
 	
-	# Skip the header row (ID, Username, etc.)
-	var _header = file.get_line() 
+	# 1. Skip the header row (ID, Username, etc.)
+	if not file.eof_reached():
+		file.get_line() 
 	
-	while !file.eof_reached():
-		var line = file.get_line()
-		if line == "": continue # Skip empty lines
+	# 2. Loop through the remaining lines
+	while not file.eof_reached():
+		var line = file.get_line().strip_edges()
 		
-		# Split the CSV row into an array
-		var columns = line.split(",") 
-		
-		# Create a new row in the Tree
-		var row = tree.create_item(root)
-		for i in range(columns.size()):
-			# Remove quotes if you used them in the export
-			var clean_text = columns[i].replace('"', '')
-			row.set_text(i, clean_text)
+		# 3. Only count lines that actually contain data
+		if line != "":
+			student_count += 1
+	
+	file.close()
+	return student_count
 
 func _on_file_dialog_files_selected(paths: PackedStringArray):
 	var csv_content = CSV_HEADER
@@ -60,24 +48,28 @@ func _on_file_dialog_files_selected(paths: PackedStringArray):
 	
 	for path in paths:
 		# Load the custom resource (QuizResultData)
-		var result = ResourceLoader.load(path)
+		var result = ResourceLoader.load(path) as PlayerStats
 		
 		if result:
+			print(result.quiz_title)
+			print(result.username)
 			# Format the row (comma-separated)
-			var row = "%s,%s,%s,%d,%d,%d,%d,%s\n" % [
-				result.id,
+			var row = "%s,%s,%s,%d,%d,%s,%s,%s,%s,%s\n" % [
 				result.username,
+				result.password,
 				result.quiz_title,
 				result.score,
 				result.total_questions,
-				result.quiz_frequency,
-				result.defeated_boss_count,
+				result.defeated_boss,
+				result.schedule_date,
+				result.schedule_time_from,
+				result.schedule_time_to,
 				result.date_added
 			]
 			csv_content += row
 	
 	save_csv_file(csv_content)
-	load_csv_to_table(save_path)
+	show_student_count()
 
 func save_csv_file(content: String):
 	var file = FileAccess.open(save_path, FileAccess.WRITE)

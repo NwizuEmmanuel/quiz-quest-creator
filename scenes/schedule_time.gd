@@ -6,7 +6,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	from_input.text = Time.get_time_string_from_system()
+	pass
 	
 
 func show_dialog(mssg: String):

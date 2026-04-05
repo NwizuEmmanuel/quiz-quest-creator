@@ -54,7 +54,7 @@ text = "Register Students"
 [node name="ViewPlayersStatsButton" type="Button" parent="VBoxContainer" unique_id=1078040820]
 layout_mode = 2
 size_flags_vertical = 3
-text = "View Player Status"
+text = "Students Results"
 
 [node name="ExitGameButton" type="Button" parent="VBoxContainer" unique_id=1382486239]
 layout_mode = 2
