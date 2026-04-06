@@ -62,7 +62,20 @@ text = "Export Quiz"
 [node name="StudentCountLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=971177562]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "0 students"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" unique_id=623340922]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/ScrollContainer" unique_id=1276733756]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 20
+columns = 11
 
 [node name="FileDialog" type="FileDialog" parent="." unique_id=156814921]
 title = "Open File(s)"

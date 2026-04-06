@@ -69,6 +69,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 clear_button_enabled = true
 
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=1120464740]
+layout_mode = 2
+text = "Fullname"
+
+[node name="FullnameInput" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=1465453825]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+clear_button_enabled = true
+
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=809283884]
 layout_mode = 2
 text = "Password"

@@ -80,6 +80,9 @@ func _on_export_button_pressed() -> void:
 
 
 func _on_add_quiz_file_dialog_dir_selected(dir: String) -> void:
+	if Global.schedule_time_from == "" or Global.schedule_time_to == "":
+		show_alert_dialog("ERROR", "Schedule time not found.")
+		return
 	# 1. Safety check: Ensure something is actually selected
 	var selected_items = %QuizTitleItemList.get_selected_items()
 	if selected_items.size() == 0:
