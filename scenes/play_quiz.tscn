@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dlvqvhbykcels"]
 
 [ext_resource type="Theme" uid="uid://dc6o4gyd3plt7" path="res://themes/ui_theme.theme" id="1_y360a"]
-[ext_resource type="Script" uid="uid://cuvsy0wk7aqtv" path="res://scenes/play_quiz.gd" id="1_yubl4"]
+[ext_resource type="Script" uid="uid://cmticqf4v6s2d" path="res://scenes/play_quiz.gd" id="1_yubl4"]
 [ext_resource type="Texture2D" uid="uid://djoh0csjxhwu3" path="res://assets/images/jlwd_2ucy_201006.jpg" id="2_y360a"]
-[ext_resource type="Texture2D" uid="uid://8vjg6lstj4co" path="res://assets/images/boss.png" id="4_xpl5k"]
-[ext_resource type="Texture2D" uid="uid://yn8d5wc12uft" path="res://assets/images/player.png" id="5_3vmhi"]
+[ext_resource type="Texture2D" uid="uid://djvdd3dwu8m7i" path="res://assets/images/boss.png" id="4_xpl5k"]
+[ext_resource type="Texture2D" uid="uid://t04deay04kgw" path="res://assets/images/player.png" id="5_3vmhi"]
 
 [node name="PlayQuiz" type="Control" unique_id=1457344942]
 layout_mode = 3
