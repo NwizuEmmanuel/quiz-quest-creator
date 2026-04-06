@@ -78,6 +78,14 @@ unique_name_in_owner = true
 layout_mode = 2
 clear_button_enabled = true
 
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=1891616794]
+layout_mode = 2
+text = "PC Numder"
+
+[node name="PCNumberInput" type="SpinBox" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=351096066]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer/GridContainer" unique_id=659334631]
 layout_mode = 2
 

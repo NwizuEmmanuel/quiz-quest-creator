@@ -4,6 +4,7 @@ const DATA_DIR = "user://"
 const FILE_PATH = DATA_DIR + "all_students_data.res"
 @onready var username_input:LineEdit = %UsernameInput
 @onready var password_input: LineEdit = %PasswordInput
+@onready var pc_number_input: SpinBox = %PCNumberInput
 @onready var itemlist: ItemList = %ItemList
 @onready var accept_dialog:AcceptDialog = $AcceptDialog
 
@@ -30,15 +31,18 @@ func refresh_itemlist():
 		itemlist.add_item(items[i].username)
 		itemlist.set_item_metadata(i, 
 		{"username":items[i].username, 
-		"password":items[i].password}
+		"password":items[i].password,
+		"pc_number": items[i].pc_number}
 		)
 
 func _on_add_button_pressed() -> void:
 	var username = username_input.text.strip_edges()
 	var password = password_input.text.strip_edges()
+	var pc_number = pc_number_input.value
 	var student = Student.new()
 	student.username = username
 	student.password = password
+	student.pc_number = pc_number
 	var all_students = load(FILE_PATH)
 	all_students.all_students.append(student)
 	ResourceSaver.save(all_students, FILE_PATH)
@@ -65,8 +69,10 @@ func _on_item_list_item_clicked(index: int, _at_position: Vector2, _mouse_button
 	var selected = itemlist.get_item_metadata(index)
 	var username = selected["username"]
 	var password = selected["password"]
+	var pc_number = selected["pc_number"]
 	username_input.text = username
 	password_input.text = password
+	pc_number_input.value = pc_number
 
 
 func _on_return_btn_pressed() -> void:
@@ -78,9 +84,11 @@ func _on_update_button_pressed() -> void:
 		var selected = itemlist.get_selected_items()[0]
 		var username = username_input.text.strip_edges()
 		var password = password_input.text.strip_edges()
+		var pc_number = pc_number_input.value
 		var student = Student.new()
 		student.username = username
 		student.password = password
+		student.pc_number = pc_number
 		var all_students = load(FILE_PATH) as AllStudents
 		all_students.all_students[selected] = student
 		ResourceSaver.save(all_students, FILE_PATH)
